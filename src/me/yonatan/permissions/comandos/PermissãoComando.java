@@ -6,7 +6,6 @@ import java.util.Map;
 import me.yonatan.permissions.BungeMainPermissao;
 import me.yonatan.permissions.objetos.PermissionManager;
 import me.yonatan.permissions.objetos.UserPermission;
-import net.md_5.bungee.api.connection.ProxiedPlayer;
 
 public class PermissãoComando implements IPermissãoComando {
 	

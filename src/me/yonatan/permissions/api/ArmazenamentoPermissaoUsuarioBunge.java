@@ -1,8 +1,6 @@
 package me.yonatan.permissions.api;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -10,9 +8,6 @@ import java.util.Map;
 
 import me.yonatan.permissions.BungeMainPermissao;
 import me.yonatan.permissions.objetos.UserPermission;
-import net.md_5.bungee.BungeeCord;
-import net.md_5.bungee.api.chat.TextComponent;
-import net.md_5.bungee.api.connection.ProxiedPlayer;
 
 public class ArmazenamentoPermissaoUsuarioBunge implements Armazenamento<UserPermission, BungeeConfigs>{
 	private HashMap<String, UserPermission> cacheamento = new HashMap<>();

@@ -2,7 +2,7 @@ package me.yonatan.permissions.comandos;
 
 import java.util.ArrayList;
 
-public class PermissãoSubComando {
+public class PermissãoSubComando{
 	
 	private String nome;
 	private String permission;

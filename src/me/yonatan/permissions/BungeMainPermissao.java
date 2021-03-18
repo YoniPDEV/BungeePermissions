@@ -2,8 +2,6 @@ package me.yonatan.permissions;
 
 import java.util.Map.Entry;
 
-import org.bukkit.Bukkit;
-
 import me.yonatan.permissions.api.ArmazenamentoPermissaoUsuarioBunge;
 import me.yonatan.permissions.api.BungeeConfigs;
 import me.yonatan.permissions.comandos.PermissãoBungeComando;
@@ -13,13 +11,15 @@ import me.yonatan.permissions.objetos.PermissionGroup;
 import me.yonatan.permissions.objetos.UserPermission;
 import net.md_5.bungee.BungeeCord;
 import net.md_5.bungee.api.chat.TextComponent;
-import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.config.Configuration;
 
 public class BungeMainPermissao extends Plugin{
 	
 	private static BungeMainPermissao instance;
+	private static PermissionManager manager;
+	private static ArmazenamentoPermissaoUsuarioBunge armazenamentoUsuarios;
+	private BungeeConfigs config;
 	
 	public static BungeMainPermissao getInstance() {
         return instance;
@@ -32,18 +32,10 @@ public class BungeMainPermissao extends Plugin{
 	public static void setArmazenamentoUsuarios(ArmazenamentoPermissaoUsuarioBunge armazenamentoUsuarios) {
 		BungeMainPermissao.armazenamentoUsuarios = armazenamentoUsuarios;
 	}
-
-
-
-	private BungeeConfigs config;
-	
-	private static PermissionManager manager;
 	
 	public static PermissionManager getManager() {
 		return manager;
 	}
-	
-	private static ArmazenamentoPermissaoUsuarioBunge armazenamentoUsuarios;
 	
 	@Override
 	public void onEnable() {
@@ -88,25 +80,11 @@ public class BungeMainPermissao extends Plugin{
 			String grupoNome = grupo.getNome();
 			Configuration secao = config.create(grupoNome);
 			secao.set("nome", grupo.getNome());
+			secao.set("Prefix", grupo.getPrefix());
+			secao.set("suffix", grupo.getSuffix());
 		}
 		config.saveConfig();
 	}
-	
-//	public void saveUsuario(UserPermission usuario) {
-//		
-//		if(usuario == null) {
-//			BungeeCord.getInstance().getConsole().sendMessage(new TextComponent("§cbug"));
-//		}
-//		
-//		String nick = usuario.getPlayer().toLowerCase();
-//		BungeeConfigs playerConfig = new BungeeConfigs("jogadores/"+ nick+ ".yml", this);
-//		playerConfig.set("nome", usuario.getPlayer());
-//		String[] array = usuario.getPermissoes().toArray(new String[usuario.getPermissoes().size()]);
-//		String[] array2 = usuario.getGroupsNames().toArray(new String[usuario.getGroupsNames().size()]);
-//		playerConfig.set("permissoes", array);
-//		playerConfig.set("grupos", array2);
-//		playerConfig.saveConfig();
-//	}
 	
 	public void reloadPlayers(){
 		manager.getUsuariosArmazenamento().loadAll();

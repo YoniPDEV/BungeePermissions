@@ -9,6 +9,11 @@ public class PermissionGroup{
 	
 	private String nome;
 	private String prefix;
+	private String suffix;
+	private Set<String> subGroupsName = new HashSet<>();
+	private Set<String> permissoes = new HashSet<>();
+	private Map<String, Boolean> permissoesCalculadas = new HashMap<>();
+	
 	public String getNome() {
 		return nome;
 	}
@@ -56,11 +61,6 @@ public class PermissionGroup{
 	public void setPermissoesCalculadas(Map<String, Boolean> permissoesCalculadas) {
 		this.permissoesCalculadas = permissoesCalculadas;
 	}
-
-	private String suffix;
-	private Set<String> subGroupsName = new HashSet<>();
-	private Set<String> permissoes = new HashSet<>();
-	private Map<String, Boolean> permissoesCalculadas = new HashMap();
 	
 	public void calcularPermissoes() {
 		
